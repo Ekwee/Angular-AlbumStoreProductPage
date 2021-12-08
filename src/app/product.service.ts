@@ -7,16 +7,17 @@ import 'rxjs/add/operator/map';
 export class ProductService {
 
   _albumUrl = '../assets/album.json';
-//  response :[];
+ // response: any[] = [];
 
 
   constructor(private _http : Http ) { }
 
   getAlbum(id:number){
     this._http.get(this._albumUrl)
-    .subscribe(
-      response => response.json
-    )
+    .map((response : Response)=>{
+      response.json
+    });
+    
   }
 
 }
